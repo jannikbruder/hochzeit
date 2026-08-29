@@ -1,389 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Elena & Jannik – 17. September 2027</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#a6a8d3">
+<title>Elena & Jannik – 17. September 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300;400;500&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+:root{--lav:#a6a8d3;--lavd:#8f92c3;--cream:#fff1a8;--cream2:#fff8d8;--paper:#fffdf8;--ink:#47475f;--line:rgba(71,71,95,.16)}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--paper);color:var(--ink);font-family:Montserrat,Arial,sans-serif;font-weight:300} body.locked{overflow:hidden}
+a{color:inherit} section{padding:96px 24px} .wrap{width:min(1000px,100%);margin:auto} .center{text-align:center}
+.eyebrow{text-transform:uppercase;letter-spacing:.25em;font-size:11px;font-weight:500;color:var(--lavd);margin-bottom:14px}
+h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height:1;font-weight:400;margin:0 0 28px}
+.lead{width:min(720px,100%);margin:0 auto;font-size:clamp(16px,2vw,20px);line-height:1.8}
 
-  <!-- Schriften: funktionieren online. Fallbacks sind eingebaut. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300;400;500&family=Sacramento&display=swap" rel="stylesheet">
+.gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--lav);color:var(--cream);padding:24px;transition:.55s}
+.gate.hide{opacity:0;visibility:hidden;pointer-events:none}
+.gate:before,.gate:after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(255,241,168,.22);border-radius:50%}
+.gate:before{top:-320px;left:-240px} .gate:after{right:-250px;bottom:-330px}
+.gate-card{position:relative;text-align:center;width:min(480px,100%)}
+.script{font-family:Sacramento,cursive;font-size:clamp(56px,10vw,88px);line-height:.75;margin:0 0 -4px;transform:rotate(-3deg);font-weight:400}
+.bigword{font-family:Italiana,Georgia,serif;font-size:clamp(92px,20vw,160px);line-height:.8;margin:0;font-weight:400;letter-spacing:-4px}
+.gate .bigword{font-size:clamp(76px,18vw,120px);margin-bottom:38px}
+.gate-names{text-transform:uppercase;letter-spacing:.28em;font-size:12px;margin-bottom:28px}
+.gate-label{display:block;text-transform:uppercase;letter-spacing:.2em;font-size:10px;margin-bottom:10px}
+.gate-row{display:flex;width:min(390px,100%);margin:auto;border:1px solid rgba(255,241,168,.75);border-radius:999px;overflow:hidden}
+.gate input{flex:1;min-width:0;border:0;outline:0;padding:15px 18px;background:transparent;color:var(--cream);font:inherit}
+.gate input::placeholder{color:rgba(255,241,168,.65)}
+.gate button{border:0;background:var(--cream);color:#7275ad;padding:0 22px;cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:500}
+#error{min-height:20px;font-size:11px;letter-spacing:.07em;margin-top:12px}
 
-  <style>
-    :root{
-      --lavender:#a6a8d3;
-      --lavender-dark:#9295c5;
-      --cream:#fff1a8;
-      --cream-soft:#fff7d5;
-      --ink:#45455d;
-      --white:#fffdf8;
-    }
+.nav{position:fixed;z-index:100;top:0;left:0;right:0;display:flex;justify-content:center;padding:16px 18px}
+.navin{width:min(1050px,100%);display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-radius:999px;background:rgba(166,168,211,.72);backdrop-filter:blur(12px);border:1px solid rgba(255,241,168,.22);color:var(--cream)}
+.brand{font-family:Italiana,Georgia,serif;text-decoration:none;font-size:20px} .links{display:flex;gap:18px} .links a{text-decoration:none;text-transform:uppercase;letter-spacing:.12em;font-size:10px}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--ink);
-      background:var(--white);
-      font-family:"Montserrat", Arial, sans-serif;
-      font-weight:300;
-    }
+.hero{min-height:100svh;display:grid;place-items:center;position:relative;overflow:hidden;text-align:center;padding:90px 24px 48px;background:var(--lav);color:var(--cream)}
+.hero:before,.hero:after{content:"";position:absolute;width:460px;height:460px;border:1px solid rgba(255,241,168,.22);border-radius:50%}
+.hero:before{left:-220px;top:-280px} .hero:after{right:-240px;bottom:-280px}
+.hero-inner{position:relative;width:min(900px,100%)}
+.names{margin-top:68px;text-transform:uppercase;letter-spacing:.34em;font-size:clamp(14px,2vw,20px);font-weight:400}
+.date{margin-top:15px;letter-spacing:.25em;font-size:clamp(12px,1.7vw,17px);font-weight:400}
+.place{margin-top:10px;text-transform:uppercase;letter-spacing:.2em;font-size:10px;opacity:.9}
 
-    .hero{
-      min-height:100svh;
-      background:var(--lavender);
-      color:var(--cream);
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-      text-align:center;
-      padding:40px 24px;
-    }
+.intro,.photos{background:var(--cream2)}
+.day{display:grid;grid-template-columns:160px 1fr;gap:58px;padding:62px 0;border-top:1px solid var(--line)}
+.day:first-of-type{margin-top:54px} .dayk{position:sticky;top:95px;align-self:start}
+.daynum{font-family:Italiana,Georgia,serif;font-size:74px;line-height:.9;color:var(--lavd)} .dayname{margin-top:11px;text-transform:uppercase;letter-spacing:.18em;font-size:10px;font-weight:500}
+.day h3{font-family:Italiana,Georgia,serif;font-size:clamp(36px,5vw,58px);font-weight:400;margin:0 0 8px}
+.daysub{margin:0 0 26px;text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--lavd);font-weight:500}
+.day p{line-height:1.8;font-size:15px;max-width:720px}
+.schedule{margin:30px 0;border-left:1px solid var(--lav)} .row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:10px 0 10px 22px} .row strong{color:var(--lavd);font-weight:500}
+.closing{font-family:Italiana,Georgia,serif;font-size:28px!important;line-height:1.35!important;margin-top:28px}
 
-    .hero::before,
-    .hero::after{
-      content:"";
-      position:absolute;
-      border:1px solid rgba(255,241,168,.24);
-      border-radius:50%;
-      width:420px;
-      height:420px;
-      pointer-events:none;
-    }
-    .hero::before{top:-250px;left:-180px}
-    .hero::after{right:-220px;bottom:-260px}
+.stay{background:var(--lav);color:var(--cream)} .stay .eyebrow,.stay h2{color:var(--cream)} .grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{border:1px solid rgba(255,241,168,.38);padding:34px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
+.card h3{font-family:Italiana,Georgia,serif;font-size:38px;font-weight:400;margin:0 0 12px} .card p{line-height:1.75}
+.btn{display:inline-flex;width:max-content;max-width:100%;padding:14px 22px;border:1px solid currentColor;text-decoration:none;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:500}
 
-    .hero-inner{
-      width:min(920px,100%);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      min-height:calc(100svh - 80px);
-    }
+.photos{text-align:center} .photobox{width:min(680px,100%);margin:38px auto 0;padding:38px 28px;border:1px dashed rgba(71,71,95,.28)} .photobox .btn{margin-top:10px;opacity:.55;cursor:not-allowed}
+.small{font-size:12px;line-height:1.7;opacity:.76} footer{text-align:center;padding:48px 24px;text-transform:uppercase;letter-spacing:.16em;font-size:10px}
 
-    .save{
-      font-family:"Sacramento","Brush Script MT",cursive;
-      font-size:clamp(46px,8vw,88px);
-      line-height:.7;
-      font-weight:400;
-      margin:0 0 -8px;
-      transform:rotate(-3deg);
-      letter-spacing:1px;
-    }
-
-    .date-word{
-      font-family:"Italiana","Times New Roman",serif;
-      font-size:clamp(110px,22vw,240px);
-      line-height:.82;
-      font-weight:400;
-      margin:0;
-      letter-spacing:-6px;
-    }
-
-    .names{
-      margin-top:auto;
-      text-transform:uppercase;
-      letter-spacing:.34em;
-      font-size:clamp(14px,2.2vw,22px);
-      font-weight:400;
-    }
-
-    .hero-date{
-      margin:15px 0 7px;
-      letter-spacing:.28em;
-      font-size:clamp(13px,2vw,18px);
-      font-weight:400;
-    }
-
-    .hero-place{
-      margin:0 0 14px;
-      letter-spacing:.24em;
-      text-transform:uppercase;
-      font-size:11px;
-      opacity:.92;
-    }
-
-    .scroll{
-      position:absolute;
-      bottom:22px;
-      left:50%;
-      transform:translateX(-50%);
-      color:var(--cream);
-      text-decoration:none;
-      font-size:11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      opacity:.75;
-    }
-
-    section{
-      padding:100px 24px;
-    }
-
-    .wrap{
-      width:min(980px,100%);
-      margin:0 auto;
-    }
-
-    .eyebrow{
-      text-transform:uppercase;
-      letter-spacing:.26em;
-      font-size:12px;
-      margin-bottom:18px;
-      color:var(--lavender-dark);
-      font-weight:500;
-    }
-
-    h2{
-      font-family:"Italiana","Times New Roman",serif;
-      font-size:clamp(46px,7vw,80px);
-      font-weight:400;
-      line-height:1;
-      margin:0 0 28px;
-      color:var(--ink);
-    }
-
-    .intro{
-      text-align:center;
-      background:var(--cream-soft);
-    }
-
-    .intro p{
-      width:min(680px,100%);
-      margin:0 auto;
-      font-size:clamp(16px,2vw,20px);
-      line-height:1.8;
-    }
-
-    .details{
-      background:var(--white);
-    }
-
-    .detail-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-      margin-top:48px;
-    }
-
-    .card{
-      border-top:1px solid rgba(69,69,93,.25);
-      padding-top:22px;
-    }
-
-    .card .num{
-      font-family:"Italiana","Times New Roman",serif;
-      font-size:44px;
-      color:var(--lavender-dark);
-      margin-bottom:10px;
-    }
-
-    .card h3{
-      margin:0 0 8px;
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-weight:500;
-    }
-
-    .card p{
-      margin:0;
-      line-height:1.7;
-      font-size:15px;
-    }
-
-    .countdown{
-      background:var(--lavender);
-      color:var(--cream);
-      text-align:center;
-    }
-
-    .countdown h2{color:var(--cream)}
-    .countdown .eyebrow{color:var(--cream)}
-
-    .counter{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      width:min(700px,100%);
-      margin:48px auto 0;
-      gap:14px;
-    }
-
-    .counter div{
-      border-top:1px solid rgba(255,241,168,.45);
-      padding:18px 8px 0;
-    }
-
-    .counter strong{
-      display:block;
-      font-family:"Italiana","Times New Roman",serif;
-      font-weight:400;
-      font-size:clamp(42px,7vw,72px);
-      line-height:1;
-    }
-
-    .counter span{
-      display:block;
-      margin-top:10px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:10px;
-    }
-
-    .rsvp{
-      text-align:center;
-    }
-
-    .button{
-      display:inline-block;
-      margin-top:20px;
-      padding:16px 30px;
-      border:1px solid var(--ink);
-      color:var(--ink);
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:.2em;
-      font-size:11px;
-      transition:.25s ease;
-    }
-    .button:hover{
-      background:var(--ink);
-      color:var(--white);
-    }
-
-    footer{
-      background:var(--cream-soft);
-      text-align:center;
-      padding:45px 24px;
-      font-size:12px;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-    }
-
-    @media (max-width:700px){
-      .date-word{letter-spacing:-3px}
-      .detail-grid{grid-template-columns:1fr;gap:35px}
-      section{padding:76px 22px}
-      .counter{gap:8px}
-      .names{letter-spacing:.22em}
-      .hero-date{letter-spacing:.18em}
-    }
-  </style>
+@media(max-width:760px){.links{display:none}.navin{justify-content:center}.bigword{letter-spacing:-2px}.names{letter-spacing:.23em}section{padding:76px 22px}.day{grid-template-columns:1fr;gap:24px;padding:48px 0}.dayk{position:static}.row{grid-template-columns:1fr;gap:3px}.grid{grid-template-columns:1fr}.card{min-height:0}.gate-row{display:grid;border-radius:26px}.gate button{padding:14px}}
+</style>
 </head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <p class="script">wir</p><div class="bigword">heiraten</div>
+    <div class="gate-names">Elena &amp; Jannik · 17.09.2027</div>
+    <label class="gate-label" for="pw">Passwort</label>
+    <div class="gate-row"><input id="pw" type="password" placeholder="Passwort eingeben"><button id="unlock">Eintreten</button></div>
+    <div id="error"></div>
+  </div>
+</div>
 
-<body>
+<nav class="nav"><div class="navin"><a class="brand" href="#top">E &amp; J</a><div class="links"><a href="#wochenende">Wochenende</a><a href="#uebernachten">Übernachten</a><a href="#fotos">Fotos</a></div></div></nav>
 
-  <header class="hero">
-    <div class="hero-inner">
-      <div aria-label="Save our date">
-        <p class="save">save our</p>
-        <h1 class="date-word">date</h1>
-      </div>
+<header class="hero" id="top"><div class="hero-inner">
+  <p class="script">wir</p><h1 class="bigword">heiraten</h1>
+  <div class="names">Elena &amp; Jannik</div><div class="date">17. SEPTEMBER 2027</div><div class="place">Eggershof · Soltau</div>
+</div></header>
 
-      <div class="names">Elena &amp; Jannik</div>
-      <div class="hero-date">17. SEPTEMBER 2027</div>
-      <div class="hero-place">Eggershof · Soltau</div>
-    </div>
-    <a class="scroll" href="#willkommen">Mehr entdecken ↓</a>
-  </header>
+<section class="intro center"><div class="wrap">
+  <div class="eyebrow">Unser Hochzeitswochenende</div><h2>Drei Tage mit euch.</h2>
+  <p class="lead">Wir freuen uns sehr darauf, nicht nur einen Tag, sondern ein ganzes Wochenende mit euch auf dem Eggershof zu verbringen. Hier findet ihr einen Überblick über die wichtigsten Zeiten und Programmpunkte.</p>
+</div></section>
 
-  <section class="intro" id="willkommen">
-    <div class="wrap">
-      <div class="eyebrow">Wir heiraten</div>
-      <h2>Ein Tag mit euch.</h2>
-      <p>
-        Am 17. September 2027 möchten wir mit unseren liebsten Menschen
-        auf dem Eggershof feiern. Wir freuen uns auf einen besonderen Tag
-        voller guter Gespräche, Essen, Musik, Tanz und ganz viel gemeinsamer Zeit.
-      </p>
-    </div>
-  </section>
+<section id="wochenende"><div class="wrap">
+<div class="eyebrow">Der Ablauf</div><h2>Unser Wochenende.</h2>
 
-  <section class="details">
-    <div class="wrap">
-      <div class="eyebrow">Die wichtigsten Infos</div>
-      <h2>Save the date.</h2>
+<article class="day"><div class="dayk"><div class="daynum">16</div><div class="dayname">Donnerstag · September</div></div><div>
+<h3>Ankommen &amp; Get-together</h3><p class="daysub">ab 17:00 Uhr · Eggershof</p>
+<p>Für alle, die bereits am Donnerstag anreisen, möchten wir ganz entspannt in unser Hochzeitswochenende starten.</p>
+<p>Bei einem gemeinsamen Abendessen, kühlen Getränken und hoffentlich schönem Spätsommerwetter haben wir Zeit zum Ankommen, Wiedersehen und Kennenlernen.</p>
+<div class="schedule"><div class="row"><strong>17:00 Uhr</strong><span>Beginn des Get-togethers</span></div><div class="row"><strong>bis ca. 23:00 Uhr</strong><span>Essen &amp; Getränke</span></div></div>
+<p class="closing">Kommt ganz entspannt, wie ihr seid – der Donnerstag soll gemütlich und ungezwungen werden.</p>
+</div></article>
 
-      <div class="detail-grid">
-        <div class="card">
-          <div class="num">01</div>
-          <h3>Wann</h3>
-          <p>Freitag<br><strong>17. September 2027</strong></p>
-        </div>
+<article class="day"><div class="dayk"><div class="daynum">17</div><div class="dayname">Freitag · September</div></div><div>
+<h3>Wir heiraten!</h3><p class="daysub">Eggershof · Soltau</p>
+<p>Für die Übernachtungsgäste beginnt der Tag ganz entspannt mit einem gemeinsamen Frühstück auf dem Hof. Danach bleibt genügend Zeit, um sich in Ruhe auf den großen Tag vorzubereiten.</p>
+<div class="schedule">
+<div class="row"><strong>08:00–11:00 Uhr</strong><span>Frühstück für die Hausgäste</span></div>
+<div class="row"><strong>16:00 Uhr</strong><span>Freie Trauung auf der Waldlichtung</span></div>
+<div class="row"><strong>ab 17:00 Uhr</strong><span>Empfang &amp; Flammkuchen vor der Fachwerkscheune</span></div>
+<div class="row"><strong>18:00 Uhr</strong><span>Wir nehmen gemeinsam Platz</span></div>
+<div class="row"><strong>18:30 Uhr</strong><span>Abendessen</span></div>
+<div class="row"><strong>ab 20:30 Uhr</strong><span>Dessert &amp; anschließend Feier</span></div>
+</div>
+<p>Nach der Trauung gehen wir gemeinsam zur Fachwerkscheune und stoßen auf uns und diesen besonderen Tag an.</p>
+<p class="closing">Danach gibt es eigentlich nur noch einen Programmpunkt: Tanzen, feiern und den Abend mit euch genießen.</p>
+<p>Und für alle, die irgendwann wieder Hunger bekommen, wartet später in der Nacht noch ein Mitternachtssnack.</p>
+</div></article>
 
-        <div class="card">
-          <div class="num">02</div>
-          <h3>Wo</h3>
-          <p><strong>Eggershof</strong><br>bei Soltau</p>
-        </div>
+<article class="day"><div class="dayk"><div class="daynum">18</div><div class="dayname">Samstag · September</div></div><div>
+<h3>Gemeinsam ausklingen lassen</h3>
+<p>Nach einer hoffentlich langen Nacht möchten wir unser Hochzeitswochenende noch einmal ganz entspannt mit euch ausklingen lassen.</p>
+<div class="schedule"><div class="row"><strong>08:00–11:00 Uhr</strong><span>Frühstück auf dem Eggershof</span></div></div>
+<p>Für alle Übernachtungsgäste ist das Frühstück bereits inklusive. Auch Gäste, die nicht auf dem Eggershof übernachten, können gerne zum Frühstück dazukommen.</p>
+<p>Noch einmal zusammensitzen, Kaffee trinken, Geschichten vom Vorabend austauschen und langsam Abschied nehmen.</p>
+<p class="closing">Und dann heißt es irgendwann: Danke für dieses Wochenende mit euch. ♡</p>
+</div></article>
+</div></section>
 
-        <div class="card">
-          <div class="num">03</div>
-          <h3>Was euch erwartet</h3>
-          <p>Trauung, gemeinsames Essen, Musik, Tanz und eine lange Sommernacht.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="stay" id="uebernachten"><div class="wrap">
+<div class="eyebrow">Übernachten &amp; Ort</div><h2>Alles an einem Ort.</h2>
+<div class="grid">
+<div class="card"><div><h3>Zimmer buchen</h3><p>Über unseren Buchungslink könnt ihr direkt die für unsere Hochzeit reservierten Zimmer für den Zeitraum 17.–19. September 2027 auswählen.</p></div>
+<a class="btn" target="_blank" rel="noopener" href="https://app.mews.com/distributor/09cdc05a-140e-4898-91f9-b3e00075aafd?mewsAvailabilityBlockId=04a9b332-90d4-47ae-865e-b4a200782948&amp;mewsStart=2027-09-17&amp;mewsEnd=2027-09-19">Hotel buchen</a></div>
+<div class="card"><div><h3>Der Eggershof</h3><p>Hier findet ihr weitere Informationen zum Hof, zur Umgebung und zu unserem Hochzeitsort bei Soltau.</p></div>
+<a class="btn" target="_blank" rel="noopener" href="https://www.eggershof.de">Eggershof ansehen</a></div>
+</div></div></section>
 
-  <section class="countdown">
-    <div class="wrap">
-      <div class="eyebrow">Bis wir „Ja“ sagen</div>
-      <h2>Noch ein bisschen Vorfreude.</h2>
+<section class="photos" id="fotos"><div class="wrap">
+<div class="eyebrow">Nach der Hochzeit</div><h2>Eure Fotos.</h2>
+<p class="lead">Wir möchten später gerne einen gemeinsamen Ort schaffen, an dem ihr eure schönsten Fotos und kleinen Momente vom Wochenende mit uns teilen könnt.</p>
+<div class="photobox"><p><strong>Foto-Upload folgt.</strong></p><p class="small">Sobald der gemeinsame Upload eingerichtet ist, erscheint hier ein direkter Link. So können wir später einfach einen Google-Drive-, Dropbox- oder anderen Upload-Link hinterlegen.</p><span class="btn" aria-disabled="true">Fotos hochladen</span></div>
+</div></section>
 
-      <div class="counter" aria-label="Countdown">
-        <div><strong id="days">–</strong><span>Tage</span></div>
-        <div><strong id="hours">–</strong><span>Stunden</span></div>
-        <div><strong id="minutes">–</strong><span>Minuten</span></div>
-        <div><strong id="seconds">–</strong><span>Sekunden</span></div>
-      </div>
-    </div>
-  </section>
+<footer>Elena &amp; Jannik · 17. September 2027 · Eggershof</footer>
 
-  <section class="rsvp">
-    <div class="wrap">
-      <div class="eyebrow">Weitere Informationen folgen</div>
-      <h2>Wir freuen uns auf euch.</h2>
-      <p>
-        Alle Details zu Ablauf, Übernachtung, Anreise und Rückmeldung
-        findet ihr bald hier.
-      </p>
-      <a class="button" href="mailto:">Kontakt</a>
-    </div>
-  </section>
-
-  <footer>
-    Elena &amp; Jannik · 17.09.2027 · Eggershof
-  </footer>
-
-  <script>
-    const weddingDate = new Date("2027-09-17T16:00:00+02:00");
-
-    function updateCountdown(){
-      const now = new Date();
-      let distance = weddingDate - now;
-
-      if(distance <= 0){
-        document.querySelector(".counter").innerHTML =
-          "<div style='grid-column:1/-1'><strong>Heute!</strong><span>Wir heiraten</span></div>";
-        return;
-      }
-
-      const day = 1000 * 60 * 60 * 24;
-      const hour = 1000 * 60 * 60;
-      const minute = 1000 * 60;
-
-      document.getElementById("days").textContent = Math.floor(distance / day);
-      document.getElementById("hours").textContent = Math.floor((distance % day) / hour);
-      document.getElementById("minutes").textContent = Math.floor((distance % hour) / minute);
-      document.getElementById("seconds").textContent = Math.floor((distance % minute) / 1000);
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-</body>
-</html>
+<script>
+const HASH="c5ce1cdc757aca98673ee2a01998279a05e935ea48501aab367657f7b8e3c6e8";
+const gate=document.getElementById("gate"),pw=document.getElementById("pw"),err=document.getElementById("error");
+async function hash(t){const d=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,"0")).join("")}
+function openSite(){sessionStorage.setItem("weddingAccess","yes");gate.classList.add("hide");document.body.classList.remove("locked");setTimeout(()=>gate.remove(),650)}
+async function unlock(){err.textContent="";if(!pw.value.trim()){err.textContent="Bitte Passwort eingeben.";return}if(await hash(pw.value.trim())===HASH)openSite();else{err.textContent="Das Passwort stimmt leider nicht.";pw.select()}}
+if(sessionStorage.getItem("weddingAccess")==="yes"){gate.remove();document.body.classList.remove("locked")}
+document.getElementById("unlock").addEventListener("click",unlock);pw.addEventListener("keydown",e=>{if(e.key==="Enter")unlock()})
+</script>
+</body></html>
