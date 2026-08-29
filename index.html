@@ -62,7 +62,44 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
 .photos{text-align:center} .photobox{width:min(680px,100%);margin:38px auto 0;padding:38px 28px;border:1px dashed rgba(71,71,95,.28)} .photobox .btn{margin-top:10px;opacity:.55;cursor:not-allowed}
 .small{font-size:12px;line-height:1.7;opacity:.76} footer{text-align:center;padding:48px 24px;text-transform:uppercase;letter-spacing:.16em;font-size:10px}
 
-@media(max-width:760px){.links{display:none}.navin{justify-content:center}.bigword{letter-spacing:-2px}.names{letter-spacing:.23em}section{padding:76px 22px}.day{grid-template-columns:1fr;gap:24px;padding:48px 0}.dayk{position:static}.row{grid-template-columns:1fr;gap:3px}.grid{grid-template-columns:1fr}.card{min-height:0}.gate-row{display:grid;border-radius:26px}.gate button{padding:14px}}
+
+/* RSVP */
+.rsvp{background:var(--paper)}
+.rsvp-intro{max-width:720px;margin-bottom:46px;line-height:1.8}
+.rsvp-form{width:min(780px,100%);margin:0 auto}
+.form-block{padding:30px 0;border-top:1px solid var(--line)}
+.form-block:first-child{border-top:0}
+.form-title{font-family:Italiana,Georgia,serif;font-size:30px;font-weight:400;margin:0 0 16px}
+.form-help{font-size:12px;line-height:1.6;opacity:.72;margin:-7px 0 18px}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field label,.text-label{display:block;text-transform:uppercase;letter-spacing:.13em;font-size:10px;font-weight:500;margin-bottom:8px}
+.field input,.field select,.field textarea,.full-input{
+  width:100%;border:1px solid rgba(71,71,95,.22);background:#fff;padding:14px 15px;color:var(--ink);
+  border-radius:0;outline:none;font:inherit;font-size:14px
+}
+.field textarea{min-height:115px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus,.full-input:focus{border-color:var(--lavd)}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.option{position:relative}
+.option input{position:absolute;opacity:0;pointer-events:none}
+.option label{
+  display:flex;align-items:center;min-height:52px;padding:12px 14px;border:1px solid rgba(71,71,95,.22);
+  cursor:pointer;transition:.18s;font-size:13px;line-height:1.35
+}
+.option input:checked + label{background:var(--lav);border-color:var(--lav);color:var(--cream)}
+.option input:focus-visible + label{outline:2px solid var(--lavd);outline-offset:2px}
+.logistics.hidden{display:none}
+.submit-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:10px}
+.submit-btn{
+  appearance:none;border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:15px 24px;
+  cursor:pointer;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:500
+}
+.submit-btn:hover{background:var(--lavd);border-color:var(--lavd)}
+.form-note{font-size:11px;line-height:1.6;opacity:.7;max-width:470px}
+.form-status{margin-top:18px;padding:14px 16px;background:var(--cream2);display:none;font-size:13px;line-height:1.6}
+.form-status.show{display:block}
+
+@media(max-width:760px){.links{display:none}.navin{justify-content:center}.bigword{letter-spacing:-2px}.names{letter-spacing:.23em}section{padding:76px 22px}.day{grid-template-columns:1fr;gap:24px;padding:48px 0}.dayk{position:static}.row{grid-template-columns:1fr;gap:3px}.grid{grid-template-columns:1fr}.card{min-height:0}.gate-row{display:grid;border-radius:26px}.gate button{padding:14px}.field-grid,.options{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="locked">
@@ -76,7 +113,7 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
   </div>
 </div>
 
-<nav class="nav"><div class="navin"><a class="brand" href="#top">E &amp; J</a><div class="links"><a href="#wochenende">Wochenende</a><a href="#uebernachten">Übernachten</a><a href="#fotos">Fotos</a></div></div></nav>
+<nav class="nav"><div class="navin"><a class="brand" href="#top">E &amp; J</a><div class="links"><a href="#wochenende">Wochenende</a><a href="#uebernachten">Übernachten</a><a href="#rsvp">Zu- &amp; Absage</a><a href="#fotos">Fotos</a></div></div></nav>
 
 <header class="hero" id="top"><div class="hero-inner">
   <p class="script">wir</p><h1 class="bigword">heiraten</h1>
@@ -134,6 +171,148 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
 <a class="btn" target="_blank" rel="noopener" href="https://www.eggershof.de">Eggershof ansehen</a></div>
 </div></div></section>
 
+
+<section class="rsvp" id="rsvp"><div class="wrap">
+  <div class="eyebrow">Zu- &amp; Absage</div>
+  <h2>Seid ihr dabei?</h2>
+  <p class="rsvp-intro">
+    Damit wir unser Hochzeitswochenende gut planen können, gebt uns bitte über dieses Formular Bescheid,
+    ob und wann ihr dabei seid und wo ihr übernachtet. Eine Antwort pro Einladung bzw. Haushalt reicht vollkommen.
+  </p>
+
+  <!--
+    WICHTIG: Nach dem Anlegen des Formulars bei Formspree
+    DEINE_FORM_ID unten durch deine echte Formspree-ID ersetzen.
+    Beispiel: https://formspree.io/f/abcdwxyz
+  -->
+  <form class="rsvp-form" id="rsvpForm" action="https://formspree.io/f/xjyvkobo" method="POST">
+    <input type="hidden" name="_subject" value="RSVP Hochzeit Elena & Jannik">
+
+    <div class="form-block">
+      <h3 class="form-title">Wer antwortet?</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label for="rsvpName">Name / Namen *</label>
+          <input id="rsvpName" name="Name" type="text" required placeholder="z. B. Anna & Max Mustermann">
+        </div>
+        <div class="field">
+          <label for="rsvpEmail">E-Mail</label>
+          <input id="rsvpEmail" name="E-Mail" type="email" placeholder="für Rückfragen">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <h3 class="form-title">Seid ihr dabei? *</h3>
+      <div class="options">
+        <div class="option">
+          <input id="yes" type="radio" name="Teilnahme" value="Ja, wir sind dabei" required>
+          <label for="yes">♡ Ja, wir sind dabei</label>
+        </div>
+        <div class="option">
+          <input id="no" type="radio" name="Teilnahme" value="Leider nicht">
+          <label for="no">Leider können wir nicht kommen</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="logistics" id="logistics">
+      <div class="form-block">
+        <h3 class="form-title">Mit wie vielen Personen?</h3>
+        <div class="field">
+          <label for="people">Personenzahl</label>
+          <select id="people" name="Personenzahl">
+            <option value="">Bitte auswählen</option>
+            <option>1 Person</option><option>2 Personen</option><option>3 Personen</option>
+            <option>4 Personen</option><option>5 Personen</option><option>6 Personen</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <h3 class="form-title">Wann seid ihr dabei?</h3>
+        <p class="form-help">Mehrere Angaben sind möglich.</p>
+        <div class="options">
+          <div class="option">
+            <input id="thu" type="checkbox" name="Programmpunkte" value="Donnerstag – Get-together">
+            <label for="thu">Donnerstag · Get-together</label>
+          </div>
+          <div class="option">
+            <input id="fri" type="checkbox" name="Programmpunkte" value="Freitag – Hochzeit">
+            <label for="fri">Freitag · Hochzeit</label>
+          </div>
+          <div class="option">
+            <input id="sat" type="checkbox" name="Programmpunkte" value="Samstag – Frühstück">
+            <label for="sat">Samstag · Frühstück</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <h3 class="form-title">Wann reist ihr an?</h3>
+        <div class="options">
+          <div class="option">
+            <input id="arrThu" type="radio" name="Anreise" value="Donnerstag, 16.09.2027">
+            <label for="arrThu">Donnerstag · 16.09.</label>
+          </div>
+          <div class="option">
+            <input id="arrFri" type="radio" name="Anreise" value="Freitag, 17.09.2027">
+            <label for="arrFri">Freitag · 17.09.</label>
+          </div>
+          <div class="option">
+            <input id="arrOther" type="radio" name="Anreise" value="Anders / noch offen">
+            <label for="arrOther">Anders / noch offen</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <h3 class="form-title">Wo übernachtet ihr?</h3>
+        <div class="options">
+          <div class="option">
+            <input id="stayEgg" type="radio" name="Übernachtung" value="Auf dem Eggershof">
+            <label for="stayEgg">Auf dem Eggershof</label>
+          </div>
+          <div class="option">
+            <input id="staySol" type="radio" name="Übernachtung" value="In Soltau / Umgebung">
+            <label for="staySol">In Soltau / Umgebung</label>
+          </div>
+          <div class="option">
+            <input id="stayNone" type="radio" name="Übernachtung" value="Keine Übernachtung">
+            <label for="stayNone">Keine Übernachtung</label>
+          </div>
+          <div class="option">
+            <input id="stayOpen" type="radio" name="Übernachtung" value="Noch offen">
+            <label for="stayOpen">Noch offen</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-block">
+        <h3 class="form-title">Essen &amp; Besonderheiten</h3>
+        <div class="field-grid">
+          <div class="field">
+            <label for="food">Ernährung / Allergien</label>
+            <textarea id="food" name="Ernährung / Allergien" placeholder="z. B. vegetarisch, vegan, Allergien …"></textarea>
+          </div>
+          <div class="field">
+            <label for="message">Nachricht an uns</label>
+            <textarea id="message" name="Nachricht" placeholder="Wenn ihr uns noch etwas sagen möchtet …"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <div class="submit-row">
+        <button class="submit-btn" type="submit">Antwort senden</button>
+        <span class="form-note">Die Angaben werden ausschließlich zur Planung unseres Hochzeitswochenendes verwendet.</span>
+      </div>
+      <div class="form-status" id="formStatus"></div>
+    </div>
+  </form>
+</div></section>
+
 <section class="photos" id="fotos"><div class="wrap">
 <div class="eyebrow">Nach der Hochzeit</div><h2>Eure Fotos.</h2>
 <p class="lead">Wir möchten später gerne einen gemeinsamen Ort schaffen, an dem ihr eure schönsten Fotos und kleinen Momente vom Wochenende mit uns teilen könnt.</p>
@@ -143,6 +322,66 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
 <footer>Elena &amp; Jannik · 17. September 2027 · Eggershof</footer>
 
 <script>
+
+const rsvpForm=document.getElementById("rsvpForm");
+const logistics=document.getElementById("logistics");
+const yesRadio=document.getElementById("yes");
+const noRadio=document.getElementById("no");
+const formStatus=document.getElementById("formStatus");
+
+function updateRsvpFields(){
+  if(noRadio.checked){
+    logistics.classList.add("hidden");
+  }else{
+    logistics.classList.remove("hidden");
+  }
+}
+yesRadio.addEventListener("change",updateRsvpFields);
+noRadio.addEventListener("change",updateRsvpFields);
+
+/* Schöne Bestätigung ohne die Seite zu verlassen.
+   Funktioniert, sobald DEINE_FORM_ID durch die Formspree-ID ersetzt wurde. */
+rsvpForm.addEventListener("submit",async(e)=>{
+  e.preventDefault();
+
+  if(rsvpForm.action.includes("DEINE_FORM_ID")){
+    formStatus.textContent="Das RSVP-Formular ist fertig gestaltet, muss aber noch einmalig mit Formspree verbunden werden. Anleitung siehe Chat.";
+    formStatus.classList.add("show");
+    return;
+  }
+
+  const btn=rsvpForm.querySelector(".submit-btn");
+  const old=btn.textContent;
+  btn.disabled=true;
+  btn.textContent="Wird gesendet …";
+  formStatus.classList.remove("show");
+
+  try{
+    const response=await fetch(rsvpForm.action,{
+      method:"POST",
+      body:new FormData(rsvpForm),
+      headers:{"Accept":"application/json"}
+    });
+    if(response.ok){
+      formStatus.textContent=noRadio.checked
+        ? "Danke für eure Rückmeldung. Schade, dass ihr nicht dabei sein könnt. ♡"
+        : "Danke! Eure Rückmeldung ist bei uns angekommen. Wir freuen uns auf euch. ♡";
+      formStatus.classList.add("show");
+      rsvpForm.reset();
+      updateRsvpFields();
+    }else{
+      formStatus.textContent="Das Absenden hat leider nicht geklappt. Bitte versucht es noch einmal.";
+      formStatus.classList.add("show");
+    }
+  }catch(err){
+    formStatus.textContent="Das Absenden hat leider nicht geklappt. Bitte prüft eure Internetverbindung und versucht es erneut.";
+    formStatus.classList.add("show");
+  }finally{
+    btn.disabled=false;
+    btn.textContent=old;
+  }
+});
+
 const HASH="c5ce1cdc757aca98673ee2a01998279a05e935ea48501aab367657f7b8e3c6e8";
 const gate=document.getElementById("gate"),pw=document.getElementById("pw"),err=document.getElementById("error");
 async function hash(t){const d=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(t));return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,"0")).join("")}
