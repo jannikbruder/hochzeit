@@ -100,6 +100,61 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
 .form-status.show{display:block}
 
 @media(max-width:760px){.links{display:none}.navin{justify-content:center}.bigword{letter-spacing:-2px}.names{letter-spacing:.23em}section{padding:76px 22px}.day{grid-template-columns:1fr;gap:24px;padding:48px 0}.dayk{position:static}.row{grid-template-columns:1fr;gap:3px}.grid{grid-template-columns:1fr}.card{min-height:0}.gate-row{display:grid;border-radius:26px}.gate button{padding:14px}.field-grid,.options{grid-template-columns:1fr}}
+
+/* Mobile-first Feinschliff */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+button,input,select,textarea{font-size:16px}
+a,button,label{-webkit-tap-highlight-color:transparent}
+.hero{min-height:88svh}
+.hero h1{line-height:.92}
+.hero .names{line-height:1.05}
+.links{gap:18px;flex-wrap:wrap;justify-content:center}
+.links a{padding:8px 4px}
+.submit-btn,.btn,.gate button{min-height:48px}
+.field input,.field select,.field textarea,.full-input{min-height:48px}
+.option label{min-height:56px}
+section{scroll-margin-top:78px}
+
+@media(max-width:760px){
+  nav{padding:14px 18px}
+  .brand{font-size:12px;letter-spacing:.12em}
+  .links{gap:8px 14px;font-size:10px;letter-spacing:.08em}
+  .links a{padding:6px 2px}
+  .hero{min-height:82svh;padding:112px 22px 70px}
+  .hero h1{font-size:clamp(54px,18vw,86px)}
+  .hero .names{font-size:clamp(28px,9vw,46px)}
+  .hero .date{font-size:12px;letter-spacing:.16em}
+  section{padding:72px 20px}
+  h2{font-size:clamp(42px,12vw,62px);line-height:.98}
+  .eyebrow{font-size:10px}
+  .intro,.rsvp-intro{font-size:16px;line-height:1.75}
+  .timeline{gap:22px}
+  .day{padding:24px 0}
+  .time{font-size:12px}
+  .form-title{font-size:26px;line-height:1.1}
+  .form-block{padding:24px 0}
+  .field-grid,.options{grid-template-columns:1fr}
+  .field input,.field select,.field textarea,.full-input{padding:14px}
+  .field textarea{min-height:105px}
+  .option label{font-size:14px;padding:13px 14px}
+  .submit-row{display:block}
+  .submit-btn{width:100%;margin-bottom:12px}
+  .form-note{font-size:11px}
+  .gate-card{width:min(92vw,520px);padding:32px 22px}
+  .gate h1{font-size:clamp(48px,16vw,76px)}
+  .gate .couple{font-size:clamp(26px,9vw,40px)}
+  .gate-row{grid-template-columns:1fr}
+  .gate input,.gate button{width:100%}
+}
+
+@media(max-width:430px){
+  nav{align-items:flex-start}
+  .links{max-width:230px;justify-content:flex-end}
+  .hero{padding-top:126px}
+  .hero .date{font-size:11px}
+}
+
 </style>
 </head>
 <body class="locked">
@@ -177,7 +232,7 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
   <h2>Seid ihr dabei?</h2>
   <p class="rsvp-intro">
     Damit wir unser Hochzeitswochenende gut planen können, gebt uns bitte über dieses Formular Bescheid,
-    ob und wann ihr dabei seid und wo ihr übernachtet. Eine Antwort pro Einladung bzw. Haushalt reicht vollkommen.
+    ob ihr dabei seid, wann ihr anreist und wo ihr übernachtet. Eine Antwort pro Einladung bzw. Haushalt reicht vollkommen.
   </p>
 
   <!--
@@ -229,25 +284,7 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
         </div>
       </div>
 
-      <div class="form-block">
-        <h3 class="form-title">Wann seid ihr dabei?</h3>
-        <p class="form-help">Mehrere Angaben sind möglich.</p>
-        <div class="options">
-          <div class="option">
-            <input id="thu" type="checkbox" name="Programmpunkte" value="Donnerstag – Get-together">
-            <label for="thu">Donnerstag · Get-together</label>
-          </div>
-          <div class="option">
-            <input id="fri" type="checkbox" name="Programmpunkte" value="Freitag – Hochzeit">
-            <label for="fri">Freitag · Hochzeit</label>
-          </div>
-          <div class="option">
-            <input id="sat" type="checkbox" name="Programmpunkte" value="Samstag – Frühstück">
-            <label for="sat">Samstag · Frühstück</label>
-          </div>
-        </div>
-      </div>
-
+      
       <div class="form-block">
         <h3 class="form-title">Wann reist ihr an?</h3>
         <div class="options">
@@ -288,20 +325,7 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
         </div>
       </div>
 
-      <div class="form-block">
-        <h3 class="form-title">Essen &amp; Besonderheiten</h3>
-        <div class="field-grid">
-          <div class="field">
-            <label for="food">Ernährung / Allergien</label>
-            <textarea id="food" name="Ernährung / Allergien" placeholder="z. B. vegetarisch, vegan, Allergien …"></textarea>
           </div>
-          <div class="field">
-            <label for="message">Nachricht an uns</label>
-            <textarea id="message" name="Nachricht" placeholder="Wenn ihr uns noch etwas sagen möchtet …"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="form-block">
       <div class="submit-row">
