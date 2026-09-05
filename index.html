@@ -54,7 +54,7 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
 .schedule{margin:30px 0;border-left:1px solid var(--lav)} .row{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:10px 0 10px 22px} .row strong{color:var(--lavd);font-weight:500}
 .closing{font-family:Italiana,Georgia,serif;font-size:28px!important;line-height:1.35!important;margin-top:28px}
 
-.stay{background:var(--lav);color:var(--cream)} .stay .eyebrow,.stay h2{color:var(--cream)} .grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.stay{background:var(--lav);color:var(--cream)} .stay .eyebrow,.stay h2{color:var(--cream)} .grid{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .card{border:1px solid rgba(255,241,168,.38);padding:34px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between}
 .card h3{font-family:Italiana,Georgia,serif;font-size:38px;font-weight:400;margin:0 0 12px} .card p{line-height:1.75}
 .btn{display:inline-flex;width:max-content;max-width:100%;padding:14px 22px;border:1px solid currentColor;text-decoration:none;text-transform:uppercase;letter-spacing:.16em;font-size:10px;font-weight:500}
@@ -99,6 +99,7 @@ h2{font-family:Italiana,Georgia,serif;font-size:clamp(48px,7vw,82px);line-height
 .form-status{margin-top:18px;padding:14px 16px;background:var(--cream2);display:none;font-size:13px;line-height:1.6}
 .form-status.show{display:block}
 
+@media(max-width:1050px) and (min-width:761px){.grid{grid-template-columns:1fr 1fr}.grid .card:last-child{grid-column:1/-1}}
 @media(max-width:760px){.links{display:none}.navin{justify-content:center}.bigword{letter-spacing:-2px}.names{letter-spacing:.23em}section{padding:76px 22px}.day{grid-template-columns:1fr;gap:24px;padding:48px 0}.dayk{position:static}.row{grid-template-columns:1fr;gap:3px}.grid{grid-template-columns:1fr}.card{min-height:0}.gate-row{display:grid;border-radius:26px}.gate button{padding:14px}.field-grid,.options{grid-template-columns:1fr}}
 
 /* Mobile-first Feinschliff */
@@ -205,21 +206,22 @@ section{scroll-margin-top:78px}
 <p>Für alle, die bereits am Donnerstag anreisen, möchten wir ganz entspannt in unser Hochzeitswochenende starten.</p>
 <p>Bei einem gemeinsamen Abendessen, kühlen Getränken und hoffentlich schönem Spätsommerwetter haben wir Zeit zum Ankommen, Wiedersehen und Kennenlernen.</p>
 <div class="schedule"><div class="row"><strong>17:00 Uhr</strong><span>Beginn des Get-togethers</span></div><div class="row"><strong>bis ca. 23:00 Uhr</strong><span>Essen &amp; Getränke</span></div></div>
-<p class="closing">Kommt ganz entspannt, wie ihr seid – der Donnerstag soll gemütlich und ungezwungen werden.</p>
+<p class="closing"></p>
 </div></article>
 
 <article class="day"><div class="dayk"><div class="daynum">17</div><div class="dayname">Freitag · September</div></div><div>
 <h3>Wir heiraten!</h3><p class="daysub">Eggershof · Soltau</p>
-<p>Für die Übernachtungsgäste beginnt der Tag ganz entspannt mit einem gemeinsamen Frühstück auf dem Hof. Danach bleibt genügend Zeit, um sich in Ruhe auf den großen Tag vorzubereiten.</p>
+<p>Für die Übernachtungsgäste beginnt der Tag ganz entspannt mit einem gemeinsamen Frühstück auf dem Hof. Auch alle, die außerhalb übernachten, können gerne zum Frühstück auf dem Eggershof dazukommen. Danach bleibt genügend Zeit, um sich in Ruhe auf den Tag vorzubereiten.</p>
+<p>Wer den Vormittag und Mittag noch nutzen möchte, kann die Umgebung rund um Soltau entdecken: bei einem Spaziergang durch die Lüneburger Heide, einem Besuch im Wacholderpark, einer Runde Minigolf oder im Spielmuseum. Und natürlich könnt ihr es euch auch einfach auf dem Eggershof gemütlich machen und ganz entspannt in den Nachmittag starten.</p>
 <div class="schedule">
-<div class="row"><strong>08:00–11:00 Uhr</strong><span>Frühstück für die Hausgäste</span></div>
-<div class="row"><strong>16:00 Uhr</strong><span>Freie Trauung auf der Waldlichtung</span></div>
+<div class="row"><strong>08:00–11:00 Uhr</strong><span>Frühstück auf dem Eggershof</span></div>
+<div class="row"><strong>16:00 Uhr</strong><span>Standesamtliche Trauung</span></div>
 <div class="row"><strong>ab 17:00 Uhr</strong><span>Empfang &amp; Flammkuchen vor der Fachwerkscheune</span></div>
 <div class="row"><strong>18:00 Uhr</strong><span>Wir nehmen gemeinsam Platz</span></div>
 <div class="row"><strong>18:30 Uhr</strong><span>Abendessen</span></div>
 <div class="row"><strong>ab 20:30 Uhr</strong><span>Dessert &amp; anschließend Feier</span></div>
 </div>
-<p>Nach der Trauung gehen wir gemeinsam zur Fachwerkscheune und stoßen auf uns und diesen besonderen Tag an.</p>
+<p></p>
 <p class="closing">Danach gibt es eigentlich nur noch einen Programmpunkt: Tanzen, feiern und den Abend mit euch genießen.</p>
 <p>Und für alle, die irgendwann wieder Hunger bekommen, wartet später in der Nacht noch ein Mitternachtssnack.</p>
 </div></article>
@@ -237,8 +239,12 @@ section{scroll-margin-top:78px}
 <section class="stay" id="uebernachten"><div class="wrap">
 <div class="eyebrow">Übernachten &amp; Ort</div><h2>Alles an einem Ort.</h2>
 <div class="grid">
-<div class="card"><div><h3>Zimmer buchen</h3><p>Über unseren Buchungslink könnt ihr direkt die für unsere Hochzeit reservierten Zimmer für den Zeitraum 17.–19. September 2027 auswählen.</p></div>
-<a class="btn" target="_blank" rel="noopener" href="https://app.mews.com/distributor/09cdc05a-140e-4898-91f9-b3e00075aafd?mewsAvailabilityBlockId=04a9b332-90d4-47ae-865e-b4a200782948&amp;mewsStart=2027-09-17&amp;mewsEnd=2027-09-19">Hotel buchen</a></div>
+<div class="card"><div><h3>Zimmer auf dem Eggershof</h3><p>Über unseren Buchungslink könnt ihr direkt die für unsere Hochzeit reservierten Zimmer für den Zeitraum 16.–18. September 2027 auswählen.</p></div>
+<a class="btn" target="_blank" rel="noopener" href="https://app.mews.com/distributor/09cdc05a-140e-4898-91f9-b3e00075aafd?mewsAvailabilityBlockId=04a9b332-90d4-47ae-865e-b4a200782948&amp;mewsStart=2027-09-17&amp;mewsEnd=2027-09-19">Zimmer buchen</a></div>
+
+<div class="card"><div><h3>HeideLux Hotel</h3><p>Wer lieber direkt in Soltau übernachten oder eine etwas preiswertere Alternative wählen möchte, kann sich das HeideLux Hotel ansehen.</p></div>
+<a class="btn" target="_blank" rel="noopener" href="https://neo.cultbooking.com/CPC/AllProductsController.php?token=QQNDJOWWeU0iATxombRdjZ2X">HeideLux ansehen</a></div>
+
 <div class="card"><div><h3>Der Eggershof</h3><p>Hier findet ihr weitere Informationen zum Hof, zur Umgebung und zu unserem Hochzeitsort bei Soltau.</p></div>
 <a class="btn" target="_blank" rel="noopener" href="https://www.eggershof.de">Eggershof ansehen</a></div>
 </div></div></section>
@@ -275,7 +281,7 @@ section{scroll-margin-top:78px}
     </div>
 
     <div class="form-block">
-      <h3 class="form-title">Seid ihr dabei? *</h3>
+      <h3 class="form-title">Seid ihr dabei?</h3>
       <div class="options">
         <div class="option">
           <input id="yes" type="radio" name="Teilnahme" value="Ja, wir sind dabei" required>
